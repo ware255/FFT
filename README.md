@@ -1,6 +1,8 @@
 # FFT
 FFTの勉強がてら実装
 
+プログラムでは高速フーリエ変換してから逆高速フーリエ変換をしています。
+
 ## 参考文献
 - [[C言語] FFTアルゴリズムの実装と応用方法 ](https://af-e.net/c-language-fft/)
 - [Fast Fourier transform](https://cp-algorithms.com/algebra/fft.html)
