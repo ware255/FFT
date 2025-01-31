@@ -14,7 +14,7 @@ contains
         complex(8), intent(inout) :: x(:)
         logical, intent(in) :: invert
         complex(8), allocatable :: even(:), odd(:)
-        real(8), parameter :: PI = acos(-1.0)!4 * atan(1.0)
+        real(8), parameter :: PI = 4 * atan(1.0)
         complex(8) w, wn
         real(8) ang
         integer(8) i, n
