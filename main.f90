@@ -1,5 +1,4 @@
 program main
-    use, intrinsic :: ieee_arithmetic
     implicit none
     complex(8) :: x(8) = [(1,0), (1,0), (1,0), (1,0), (0,0), (0,0), (0,0), (0,0)]
     integer(8) i
