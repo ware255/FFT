@@ -8,6 +8,13 @@ program main
         print '(F8.3, F8.3, A)', real(x(i)), aimag(x(i)), "i"
     end do
 
+    call fft(x, .true.)
+    print *, ""
+
+    do i = 1, 8
+        print '(F8.3, F8.3, A)', real(x(i)), aimag(x(i)), "i"
+    end do
+
 contains
     recursive subroutine fft(x, invert)
         implicit none
@@ -19,7 +26,7 @@ contains
         real(8) ang
         integer(8) i, n
         n = ubound(x, 1)
-        if (n <= 1) return
+        if (n .eq. 1) return
 
         allocate(even(n/2))
         allocate(odd(n/2))
@@ -32,15 +39,15 @@ contains
         call fft(odd, invert)
 
         if (invert) then
-            ang = -2 * PI / n
+            ang = -2.0 * PI / n
         else
-            ang = 2 * PI / n
+            ang = 2.0 * PI / n
         end if
         w = (1.0, 0.0)
         wn = cmplx(cos(ang), sin(ang), 8)
         do i = 1, n / 2
-            x(i) = even(i) + w * odd(i)
-            x(i + n/2) = even(i) - w * odd(i)
+            x(i) = odd(i) + w * even(i)
+            x(i + n/2) = odd(i) - w * even(i)
             if (invert) then
                 x(i) = x(i) / 2
                 x(i + n/2) = x(i + n/2) / 2
